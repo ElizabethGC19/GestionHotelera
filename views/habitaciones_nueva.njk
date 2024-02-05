@@ -1,0 +1,60 @@
+{% extends "base.njk" %}
+
+{% block titulo %}Habitación | Nueva{% endblock %}
+
+{% block contenido %}
+
+    <h1>Insertar nueva habitación</h1>
+    {% if errores.general %}
+        <div class="alert alert-danger">
+            <p class="text-danger">{{errores.general}}</p>
+        </div>
+    {% endif %}
+    <form action="/habitaciones" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Número de la habitación:
+                <input type="number" class="form-control" name="numero" 
+                placeholder="Número..." >
+            </label>
+            {% if errores.numero %}
+                <p class="text-danger">{{errores.numero}}</p>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label>Selecciona tipo de habitación:</label>
+            <select class="form-control" name="tipo">
+                <option value="individual">Individual</option>
+                <option value="doble">Doble</option>
+                <option value="familiar">Familiar</option>
+                <option value="suite">Suite</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Descripción:
+                <textarea class="form-control" name="descripcion" rows="5" cols="200"></textarea>
+            </label>
+            {% if errores.descripcion %}
+                <p class="text-danger">{{errores.descripcion}}</p>
+            {% endif %}
+        </div>
+        <div class="form-group">
+        <label>Precio:
+            <input type="number" class="form-control" name="precio" step="0.01"
+            placeholder="Precio...">
+        </label>
+        {% if errores.precio %}
+            <p class="text-danger">{{errores.precio}}</p>
+        {% endif %}
+        </div>
+        <div class="form-group">
+        <label>Imagen:
+        <input type="file" class="form-control" name="imagen">
+        </label>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">
+            Enviar
+        </button>
+    </form>
+
+{% endblock %}

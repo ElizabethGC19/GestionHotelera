@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/habitaciones">Hotel</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-light" href="/habitaciones">Habitaciones</a>
+        </li>
+        {% if (session and session.login) %}
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-light" href="/habitaciones/nueva">Nueva Habitación</a>
+        </li>
+        {% endif %}
+        {% if (session and session.login) %}
+          <li class="nav-item">
+            <a class="nav-link" href="/auth/logout">Logout</a>
+          </li>
+        {% endif %}
+        {% if (session.login == undefined) %}
+          <li class="nav-item">
+            <a class="nav-link" href="/auth/login">Login</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
